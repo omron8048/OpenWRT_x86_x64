@@ -141,7 +141,8 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=${{ env.date2 }}" >> $GITHUB_OUTPUT
+        # Fixed: Read directly from environment variable scope to avoid blank targets
+        echo "release_tag=$date2" >> $GITHUB_OUTPUT
         touch release.txt
         echo "📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
@@ -154,5 +155,6 @@ jobs:
       with:
         files: ${{ env.FIRMWARE }}/*
         name: ${{ env.date1 }}
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        # Fixed: Fallback directly to env context so the tag creation parameter is never blank
+        tag_name: ${{ env.date1 }}
         body_path: release.txt
