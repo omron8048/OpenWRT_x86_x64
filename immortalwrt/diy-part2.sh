@@ -10,3 +10,6 @@ sed -i 's/CONFIG_PACKAGE_luci-app-mihomo_INCLUDE_UPX=y/# CONFIG_PACKAGE_luci-app
 
 # FIXED: Remove duplicate chinadns-ng from helloworld folder to prevent feed installation conflicts
 rm -rf package/community/helloworld/chinadns-ng
+# Force the OpenWrt toolchain engine to utilize ccache storage paths
+echo "CONFIG_CCACHE=y" >> .config
+echo "CONFIG_CCACHE_DIR=\"/home/runner/work/OpenWRT_x86_x64/OpenWRT_x86_x64/openwrt/.ccache\"" >> .config
