@@ -34,7 +34,14 @@ jobs:
       uses: actions/checkout@main
       with:
           fetch-depth: 0
-          
+    # ADD THIS STEP HERE:
+    - name: Set up Compiler Cache (ccache)
+      uses: actions/cache@v4
+      with:
+        path: openwrt/.ccache
+        key: ${{ runner.os }}-openwrt-ccache-${{ hashFiles('immortalwrt/x86_64/defconfig') }}
+        restore-keys: |
+          ${{ runner.os }}-openwrt-ccache-      
     - name: Clean build caches
       run: |
         echo "Cleaning previous build artifacts and caches..."
