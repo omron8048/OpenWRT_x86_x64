@@ -16,9 +16,7 @@ rm -rf feeds/luci/applications/luci-app-argon-config
 # Clone community packages to package/community
 mkdir package/community
 pushd package/community
-git clone --depth=1 https://github.com/fw876/helloworld
 # FIXED: Changed openwrt-passwall2 to the working public repository path
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 git clone --depth=1 https://github.com/nikkinikki-org/OpenWrt-nikki
 git clone --depth=1 https://github.com/DHDAXCW/dhdaxcw-app
 git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon
